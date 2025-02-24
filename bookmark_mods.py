@@ -56,9 +56,11 @@ def main():
             elif(option == 2):
                 # remove the specific json object from the array if it exists
                 returnArray = decoded['json_array']
-                if decoded['json_object'] in returnArray:
-                    # remove first instance of the json object
-                    returnArray.remove(decoded['json_object'])
+                target = decoded['json_object']
+                for item in returnArray:
+                    if item.get("index") == target.get("index"):
+                        returnArray.remove(item)
+                        break
             
             # convert returnArray to byte string
             jsonReturnString = json.dumps(returnArray)
