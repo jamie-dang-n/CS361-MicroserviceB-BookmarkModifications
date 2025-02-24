@@ -26,7 +26,6 @@ def convertInt(dict, field):
         returnInt = -1
     return returnInt
 
-
 def main():
     # set up ZeroMQ
     context = zmq.Context()
@@ -54,7 +53,12 @@ def main():
                 # append the json object to the end of the json array
                 returnArray = decoded['json_array']
                 returnArray.append(decoded['json_object'])
-            
+            elif(option == 2):
+                # remove the specific json object from the array if it exists
+                returnArray = decoded['json_array']
+                if decoded['json_object'] in returnArray:
+                    # remove first instance of the json object
+                    returnArray.remove(decoded['json_object'])
             
             # convert returnArray to byte string
             jsonReturnString = json.dumps(returnArray)
@@ -63,6 +67,7 @@ def main():
             socket.send(returnByteString)
         else:
             print("Bookmark Modifications Microservice has ended.")
+            socket.send_string("") # send back empty string
 
 if __name__ == "__main__":
     main()
