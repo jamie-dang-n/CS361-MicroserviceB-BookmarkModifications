@@ -2,6 +2,7 @@ import json
 import zmq
 
 """
+LISTENS ON PORT 5555
 Expected Input Format: jsonified dictionary (let "" represent a null (empty) string)
 input_dict = {
     "json_array": json_array,
