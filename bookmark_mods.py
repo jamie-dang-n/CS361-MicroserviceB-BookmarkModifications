@@ -2,7 +2,7 @@ import json
 import zmq
 
 """
-LISTENS ON PORT 5555
+LISTENS ON PORT 5553
 Expected Input Format: jsonified dictionary (let "" represent a null (empty) string)
 input_dict = {
     "json_array": json_array,
@@ -32,8 +32,8 @@ def main():
     context = zmq.Context()
     socket = context.socket(zmq.REP)
 
-    # Binds REP socket to tcp://localhost:5555
-    socket.bind("tcp://localhost:5555")
+    # Binds REP socket to tcp://localhost:5553
+    socket.bind("tcp://localhost:5553")
     proceed = 1 # continue waiting for next request while option != 0
     while (proceed != 0):
         print("Bookmark Modifications Service Listening...")
