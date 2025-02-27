@@ -47,7 +47,6 @@ def main():
         # check if option is 0-- if it is, quit the service
         proceed = convertInt(decoded, "option")
         if (proceed != 0):
-            returnArray = []
             option = decoded['option']
             # do the appropriate operation
             if (option == 1):
